@@ -2,21 +2,26 @@ const menuBtn = document.getElementById('menuBtn');
 const sideMenu = document.getElementById('sideMenu');
 const categories = document.getElementsByClassName('category');
 
-menuBtn.addEventListener('click', function() {
+menuBtn.addEventListener('click', () => {
   menuBtn.classList.toggle('on');
   sideMenu.classList.toggle('on');
 });
 
-for (let category of categories) {
-  category.addEventListener('click', function() {
+for (const category of categories) {
+  const text = category.querySelector('.text');
+  
+  text.addEventListener('click', (e) => {
+    const textHeight = text.clientHeight;
+    const subCategoriesHeight = category.querySelector('.sub-categories').clientHeight;
+
     if (category.classList.contains('on')) {
       category.classList.remove('on');
+      category.style.height = textHeight + 'px';
       return;
     }
 
-    for (let cat of categories) {
-      cat.classList.remove('on');
-    }
     category.classList.add('on');
-  })
+    category.style.height = category.clientHeight + subCategoriesHeight + 'px';
+    return;
+  });
 }
