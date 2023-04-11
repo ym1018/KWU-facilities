@@ -12,17 +12,13 @@
     background-color: rgb(229, 237, 244);
 }
 
-.hover-off {
-    pointer-events: none;
-}
-
 .popup {
     position: absolute;
 }
 
 .popup:hover .popup-text {
 	display:block;
-	transform-origin: 0% 0%;
+	transform-origin: 100% 0%;
     margin-top: 5px;
 
 	-webkit-animation: fadeIn 0.3s ease-in-out;
@@ -40,12 +36,9 @@
 	border-radius: 3px;
 	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 	color: #FFF;
+	font-size: 13px;
 	line-height: 1.4;
 }
-
-.popup-text>h4 {font-size: 16px;}
-.popup-text>h3 {font-size: 20px;}
-.popup-text>p {font-size: 13px;}
 
 .popup .popup-text:before {
 	position: absolute;
@@ -54,30 +47,8 @@
 	height: 0;
 	border:6px solid transparent;
 	border-bottom-color:#1E2021;
-}
-
-.popup .popup-triR:before {
-    transform:rotate(-90deg);
-    left:-12px;
-    top:10px;
-}
-
-.popup .popup-triL:before {
-    transform:rotate(90deg);
-    right:-12px;
-    top:10px;
-}
-
-.popup .popup-triT:before {
-    transform:rotate(180deg);
-    left:10px;
-    bottom:-12px;
-}
-
-.popup .popup-triB:before {
-    transform:rotate(0deg);
-    left:10px;
-    top:-12px;
+	left:10px;
+	top:-12px;
 }
 
 .popup:before .hover-layer {
@@ -86,14 +57,13 @@
     height: 100%;
     width: 100%;
     display:block;
-    position: relative;
 }
 
 .hover-layer:nth-child(1) {
     height: 100%;
     width: 100%;
+    position: fixed;
     background-repeat:no-repeat;
-    display:none;
 }
 
 .hover-layer:nth-child(2) {
@@ -110,27 +80,3 @@
     top: 680px;
     left: 900px;
 }
-
-.popup-click {
-    display: none;
-	text-align: left;
-	background-color: #1E2021;
-	padding: 20px;
-	width: 300px;
-	position: relative;
-
-	border-radius: 3px;
-	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-	color: #FFF;
-	line-height: 1.4;
-
-    z-index: 2;
-}
-
-.popup-click.on {
-    display: block;
-}
-
-.popup-click>h4 {font-size: 16px;}
-.popup-click>h3 {font-size: 20px;}
-.popup-click>p {font-size: 13px;}
