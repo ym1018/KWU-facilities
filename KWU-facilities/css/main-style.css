@@ -1,9 +1,11 @@
 /*
     hover-: 애니메이션 효과를 넣을 때 사용
     hover-layer: 각 이미지 별 설정
-    popup: 건물 이미지 위에 마우스를 올렸을 때 뜨는 팝업창 설정
-    popup-text: 팝업창 디자인
+    popupB: 건물 이미지 위에 마우스를 올렸을 때 뜨는 팝업창 설정
+    popupB-text: 건물 팝업창 디자인
+    popupF: 카테고리의 시설 클릭 시 뜨는 팝업창 설정
 */
+
 .hover-container {
     position: relative;
     height: 100vh;
@@ -12,24 +14,11 @@
     background-color: rgb(229, 237, 244);
 }
 
-.hover-off {
-    pointer-events: none;
-}
-
-.popup {
+.popupB {
     position: absolute;
 }
 
-.popup:hover .popup-text {
-	display:block;
-	transform-origin: 0% 0%;
-    margin-top: 5px;
-
-	-webkit-animation: fadeIn 0.3s ease-in-out;
-	animation: fadeIn 0.3s ease-in-out;
-}
-
-.popup .popup-text {
+.popupB .popupB-text {
 	display: none;
 	text-align: left;
 	background-color: #1E2021;
@@ -41,13 +30,16 @@
 	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 	color: #FFF;
 	line-height: 1.4;
+
+    z-index: 1;
+
+    transform: translate(160px, -110px);
 }
+.popupB-text>h4 {font-size: 16px;}
+.popupB-text>h3 {font-size: 20px;}
+.popupB-text>p  {font-size: 13px;}
 
-.popup-text>h4 {font-size: 16px;}
-.popup-text>h3 {font-size: 20px;}
-.popup-text>p {font-size: 13px;}
-
-.popup .popup-text:before {
+.popupB .popupB-text:before {
 	position: absolute;
 	content: '';
 	width:0;
@@ -56,31 +48,28 @@
 	border-bottom-color:#1E2021;
 }
 
-.popup .popup-triR:before {
+.popupB:hover .popupB-text {
+	display:block;
+	transform-origin: 0% 0%;
+    margin-top: 5px;
+
+	-webkit-animation: fadeIn 0.3s ease-in-out;
+	animation: fadeIn 0.3s ease-in-out;
+}
+
+.popupB .popupB-triR:before {
     transform:rotate(-90deg);
     left:-12px;
     top:10px;
 }
 
-.popup .popup-triL:before {
+.popupB .popupB-triL:before {
     transform:rotate(90deg);
     right:-12px;
     top:10px;
 }
 
-.popup .popup-triT:before {
-    transform:rotate(180deg);
-    left:10px;
-    bottom:-12px;
-}
-
-.popup .popup-triB:before {
-    transform:rotate(0deg);
-    left:10px;
-    top:-12px;
-}
-
-.popup:before .hover-layer {
+.popupB:before .hover-layer {
     top: 0;
     left: 0;
     height: 100%;
@@ -95,23 +84,17 @@
     background-repeat:no-repeat;
     display:none;
 }
+.hover-layer:nth-child(2) { top: 200px; left: 200px; }
+.hover-layer:nth-child(3) { top: 200px; left: 600px; }
+.hover-layer:nth-child(4) { top: 200px; left: 1000px; }
+.hover-layer:nth-child(5) { top: 400px; left: 200px; }
+.hover-layer:nth-child(6) { top: 400px; left: 600px; }
+.hover-layer:nth-child(7) { top: 400px; left: 1000px; }
+.hover-layer:nth-child(8) { top: 600px; left: 200px; }
+.hover-layer:nth-child(9) { top: 600px; left: 600px; }
+.hover-layer:nth-child(10) { top: 600px; left: 1000px; }
 
-.hover-layer:nth-child(2) {
-    top: 300px;
-    left: 840px;
-}
-
-.hover-layer:nth-child(3) {
-    top: 445px;
-    left: 660px;
-}
-
-.hover-layer:nth-child(4) {
-    top: 680px;
-    left: 900px;
-}
-
-.popup-click {
+.popupF {
     display: none;
 	text-align: left;
 	background-color: #1E2021;
@@ -124,13 +107,15 @@
 	color: #FFF;
 	line-height: 1.4;
 
-    z-index: 2;
-}
+    z-index: 1;
 
-.popup-click.on {
+    transform: translate(160px, -110px);
+}
+.popupF>h4 {font-size: 16px;}
+.popupF>h3 {font-size: 20px;}
+.popupF>p  {font-size: 13px;}
+
+.popupF.on {
     display: block;
 }
 
-.popup-click>h4 {font-size: 16px;}
-.popup-click>h3 {font-size: 20px;}
-.popup-click>p {font-size: 13px;}

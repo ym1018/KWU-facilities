@@ -12,43 +12,38 @@ let hover_container = document.querySelector('.hover-container');
 //     layer[3].style.transform = 'translate(' + X/100*-6 + 'px, ' + Y/100*-6 + 'px)';
 // }
 
-let target = document.querySelectorAll('.popup_btn');
-let popup = document.querySelectorAll('.popup');
-let popup_click = document.querySelectorAll('.popup-click');
-let container = document.querySelectorAll('.hover-container');
-
-let targetID, pre_targetID = undefined;
+let categoryF = document.querySelectorAll('.popupF_btn');
+let popupB = document.querySelectorAll('.popupB');
+let popupF, pre_popupF = undefined;
 
 menuBtn.addEventListener('click', function() {
-    if(sideMenu.classList.contains('on')) {
-        // container.classList.add('hover-off');
-        for(var j=0; j<popup.length; j++) {
-            popup[j].style.pointerEvents = 'none';
-        }
-    } else {
-        // container.classList.remove('hover-off');
-        for(var j=0; j<popup.length; j++) {
-            popup[j].style.pointerEvents = 'all';
-        }
-    }
+    // 사이드 메뉴 열면 건물 팝업창 비활성화
+    if(sideMenu.classList.contains('on'))
+        for(var j=0; j<popupB.length; j++)
+            popupB[j].style.pointerEvents = 'none';
+
+    // 사이드 메뉴 닫으면 건물 팝업창 활성화
+    else
+        for(var j=0; j<popupB.length; j++)
+            popupB[j].style.pointerEvents = 'all';
 });
 
-for(var i = 0; i < target.length; i++){
-    target[i].addEventListener('click', function(){
-        // 이전 팝업 비활성화
-        if(pre_targetID) {
-            document.querySelector(pre_targetID).classList.remove('on');
-        }
+for(var i = 0; i < categoryF.length; i++){
+    // 시설 클릭 시
+    categoryF[i].addEventListener('click', function() {
+        // 이전 팝업창 비활성화
+        if(pre_popupF)
+            document.querySelector(pre_popupF).classList.remove('on');
 
-        // 클릭한 카테고리 팝업 활성화
-        targetID = this.getAttribute('href');
-        document.querySelector(targetID).classList.toggle('on');
+        // 클릭한 시설 팝업창 활성화
+        popupF = this.getAttribute('href');
+        document.querySelector(popupF).classList.toggle('on');
 
-        pre_targetID = targetID;
+        pre_popupF = popupF;
 
-        // 사이드메뉴 닫으면
+        // 사이드 메뉴 닫으면 시설 팝업창 비활성화
         menuBtn.addEventListener('click', function() {
-            document.querySelector(targetID).classList.remove('on');
+            document.querySelector(popupF).classList.remove('on');
         });
     });
-  }
+}
